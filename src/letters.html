@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: aquamarine; display: flex; flex-direction: column; align-items:  center; justify-content: center;background-image: url(bg.jpg);">
+    <canvas id="glcanvas" width="512" height="512" style="border-radius: 40px; border: 4px dashed brown"></canvas>
+    <!-- <img src="bg.jpg" alt=""> -->
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        uniform float theta;
+        uniform float xShift;
+        uniform float yShift;
+        void main(){
+            gl_Position.x = (cos(theta) * vPosition.x - sin(theta) * vPosition.y) + xShift;
+	        gl_Position.y = (sin(theta) * vPosition.x + cos(theta) * vPosition.y) + yShift;
+	        gl_Position.z = 0.0;
+	        gl_Position.w = 1.0;
+
+            
+        }
+    </script>
+    
+    <select name="" id="color" style="margin-top: 15px; width: 100px; height: 25px; background-color: black; color: white;">
+        <option value="red">RED</option>
+        <option value="blue">BLUE</option>
+        <option value="green">GREEN</option>    
+    </select>
+    
+    <button id="submit" style="margin-top: 5px; width: 200px; height: 25px; background-color: black; color: white;">CHANGE COLOR</button>
+
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 u_Color;
+        void main() {
+            gl_FragColor = u_Color;
+        }
+    </script>
+
+
+    <button id="change" style="margin-top: 25px; width: 300px; height: 25px; background-color: black; color: white;">Change Direction</button>
+
+
+
+    <div style="color: blue; font-weight:900; font-size: large; margin-top: 10px;">
+        SPEED <br> 0 <input style="white-space: pre;" id="speed" type="range"
+        min="0" max="1000" step="100" value="500" />
+        1000 
+    </div>
+
+    <div style="color: blue; font-weight:900; font-size: large; margin-top: 10px;">
+        OPACITY <br> 0 <input id="opacity" type="range"
+        min="0" max="1" step="0.1" value="1" />
+        1 
+    </div>
+
+    <script src="hw.js"></script>
+    <script src="../common/initShaders.js"></script>
+    <script src="../common/MV.js"></script>
+    <script src="../common/webgl-utils.js"></script>
+</body>
+</html>
