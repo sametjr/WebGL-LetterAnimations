@@ -6,5 +6,4 @@ W - A - S - D to translate, buttons and sliders to change rotation speed, rotati
 
 
 
-![image]
-(https://user-images.githubusercontent.com/104216332/206290937-05630587-3e4f-4d90-89f9-d34bbbbfdaee.png)
+![image](https://user-images.githubusercontent.com/104216332/206290937-05630587-3e4f-4d90-89f9-d34bbbbfdaee.png)
